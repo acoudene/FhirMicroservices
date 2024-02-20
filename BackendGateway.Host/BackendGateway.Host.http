@@ -1,0 +1,6 @@
+@BackendGateway.Host_HostAddress = https://localhost:7084
+
+GET {{BackendGateway.Host_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
