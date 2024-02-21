@@ -34,28 +34,25 @@ public class HttpPatientClient : IPatientClient
   public virtual async Task<List<PatientDto>> GetByIdsAsync(List<Guid> ids, CancellationToken cancellationToken = default)
       => await _httpRestClientComponent.GetByIdsAsync(ids, GetConfigurationName(), cancellationToken);
 
-  public virtual async Task<HttpResponseMessage> CreateAsync(
+  public virtual async Task CreateAsync(
     PatientDto dto,
-    bool checkSuccessStatusCode = true,
     CancellationToken cancellationToken = default)
-     => await _httpRestClientComponent.CreateAsync(dto, GetConfigurationName(), checkSuccessStatusCode, cancellationToken);
+     => await _httpRestClientComponent.CreateAsync(dto, GetConfigurationName(), true, cancellationToken);
 
-  public virtual async Task<HttpResponseMessage> UpdateAsync(
+  public virtual async Task UpdateAsync(
     Guid id,
     PatientDto dto,
-    bool checkSuccessStatusCode = true,
     CancellationToken cancellationToken = default)
-    => await _httpRestClientComponent.UpdateAsync(id, dto, GetConfigurationName(), checkSuccessStatusCode, cancellationToken);
+    => await _httpRestClientComponent.UpdateAsync(id, dto, GetConfigurationName(), true, cancellationToken);
 
   public virtual async Task<PatientDto> DeleteAsync(
     Guid id,
     CancellationToken cancellationToken = default)
     => await _httpRestClientComponent.DeleteAsync(id, GetConfigurationName(), cancellationToken);
 
-  public virtual async Task<HttpResponseMessage> PatchAsync(
+  public virtual async Task PatchAsync(
     Guid id,
     JsonPatchDocument<PatientDto> patch,
-    bool checkSuccessStatusCode = true,
     CancellationToken cancellationToken = default)
-    => await _httpRestClientComponent.PatchAsync(id, patch, GetConfigurationName(), checkSuccessStatusCode, cancellationToken);
+    => await _httpRestClientComponent.PatchAsync(id, patch, GetConfigurationName(), true, cancellationToken);
 }

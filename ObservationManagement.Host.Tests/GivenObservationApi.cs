@@ -1,46 +1,48 @@
 ﻿// Changelogs Date  | Author                | Description
 // 2023-12-23       | Anthony Coudène       | Creation
 
-namespace PatientManagement.Host.Tests;
+namespace ObservationManagement.Host.Tests;
 
 /// WARNING - for the moment, I don't have found a solution to reset settings like connexion string on a static test server
 /// So be careful when changing settings, the same first settings will remain for server for all tests in this class even if this container is reset.
 /// For example, don't change default port to reuse the same.
-public class GivenPatientApi : HostApiMongoTestBase<Program>
+public class GivenObservationApi : HostApiMongoTestBase<Program>
 {
-  public GivenPatientApi(
+  public GivenObservationApi(
     WebApplicationFactory<Program> webApplicationFactory,
     ITestOutputHelper output)
-    : base("patient", webApplicationFactory, output)
+    : base("observation", webApplicationFactory, output)
   {
   }
 
   private const string ApiPath = "/api";
-  private const string ApiRelativePath = $"{ApiPath}/Patient/"; // Warning, this ending slash is important in HttpClientFactory... :(
+  private const string ApiRelativePath = $"{ApiPath}/Observation/"; // Warning, this ending slash is important in HttpClientFactory... :(
 
   [Theory]
-  [ClassData(typeof(PatientData))]
-  public async Task WhenCreatingItem_ThenSingleItemIsCreated_Async(PatientDto item)
+  [ClassData(typeof(ObservationData))]
+  public async Task WhenCreatingItem_ThenSingleItemIsCreated_Async(ObservationDto item)
   {
     // Arrange
+    var logger = CreateLogger<HttpObservationClient>();
     var httpClientFactory = CreateHttpClientFactory(ApiRelativePath);
-    var client = new HttpPatientClient(httpClientFactory);
+    var client = new HttpObservationClient(logger, httpClientFactory);
 
     // Act
     await client.CreateAsync(item);
 
-    // Assert
+    // Assert      
     item = await client.GetByIdAsync(item.Id);
     Assert.NotNull(item);
   }
 
   [Theory]
-  [ClassData(typeof(PatientsData))]
-  public async Task WhenCreatingItems_ThenAllItemsAreGot_Async(List<PatientDto> items)
+  [ClassData(typeof(ObservationsData))]
+  public async Task WhenCreatingItems_ThenAllItemsAreGot_Async(List<ObservationDto> items)
   {
     // Arrange
+    var logger = CreateLogger<HttpObservationClient>();
     var httpClientFactory = CreateHttpClientFactory(ApiRelativePath);
-    var client = new HttpPatientClient(httpClientFactory);
+    var client = new HttpObservationClient(logger,httpClientFactory);
     foreach (var item in items)
       await WhenCreatingItem_ThenSingleItemIsCreated_Async(item);
     var ids = items.Select(item => item.Id).ToList();
@@ -55,12 +57,13 @@ public class GivenPatientApi : HostApiMongoTestBase<Program>
   }
 
   [Theory]
-  [ClassData(typeof(PatientsData))]
-  public async Task WhenDeletingItems_ThenItemAreDeleted_Async(List<PatientDto> items)
+  [ClassData(typeof(ObservationsData))]
+  public async Task WhenDeletingItems_ThenItemAreDeleted_Async(List<ObservationDto> items)
   {
     // Arrange
+    var logger = CreateLogger<HttpObservationClient>();
     var httpClientFactory = CreateHttpClientFactory(ApiRelativePath);
-    var client = new HttpPatientClient(httpClientFactory);
+    var client = new HttpObservationClient(logger, httpClientFactory);
     foreach (var item in items)
       await WhenCreatingItem_ThenSingleItemIsCreated_Async(item);
     var ids = items.Select(item => item.Id).ToList();

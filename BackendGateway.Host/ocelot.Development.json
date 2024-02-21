@@ -79,6 +79,86 @@
       //  "AuthenticationProviderKey": "Bearer",
       //  "AllowedScopes": []
       //}
+    },
+    {
+      "DownstreamPathTemplate": "/api/observation",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7059
+        }
+      ],
+      "UpstreamPathTemplate": "/observation",
+      "UpstreamHttpMethod": [ "GET" ]
+      //,"AuthenticationOptions": {
+      //  "AuthenticationProviderKey": "Bearer",
+      //  "AllowedScopes": []
+      //}
+    },
+    {
+      "DownstreamPathTemplate": "/api/observation/{id}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7059
+        }
+      ],
+      "UpstreamPathTemplate": "/observation/{id}",
+      "UpstreamHttpMethod": [ "GET" ]
+      //,"AuthenticationOptions": {
+      //  "AuthenticationProviderKey": "Bearer",
+      //  "AllowedScopes": []
+      //}
+    },
+    {
+      "DownstreamPathTemplate": "/api/observation",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7069
+        }
+      ],
+      "UpstreamPathTemplate": "/observation",
+      "UpstreamHttpMethod": [ "POST" ]
+      //,"AuthenticationOptions": {
+      //  "AuthenticationProviderKey": "Bearer",
+      //  "AllowedScopes": []
+      //}
+    },
+    {
+      "DownstreamPathTemplate": "/api/observation",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7069
+        }
+      ],
+      "UpstreamPathTemplate": "/observation",
+      "UpstreamHttpMethod": [ "PUT" ]
+      //,"AuthenticationOptions": {
+      //  "AuthenticationProviderKey": "Bearer",
+      //  "AllowedScopes": []
+      //}
+    },
+    {
+      "DownstreamPathTemplate": "/api/observation/{id}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7069
+        }
+      ],
+      "UpstreamPathTemplate": "/observation/{id}",
+      "UpstreamHttpMethod": [ "DELETE" ]
+      //,"AuthenticationOptions": {
+      //  "AuthenticationProviderKey": "Bearer",
+      //  "AllowedScopes": []
+      //}
     }
   ],
   "GlobalConfiguration": {

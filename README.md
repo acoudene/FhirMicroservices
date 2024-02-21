@@ -36,7 +36,7 @@ dotnet new -h|--help
 
 For example: 
 
-`dotnet new vsa_generator -n MyPatient -o MyPatientFolder -e MyEntity`
+`dotnet new vsa_generator -n MyObservationManagement -o MyObservationManagementFolder -e MyEntity`
 
 ### Uninstall
 
@@ -70,32 +70,32 @@ For example:
     "language": "C#",
     "type": "solution"
   },
-  "sourceName": "Patient", // Will replace this string with the value provided via -n.
+  "sourceName": "ObservationManagement", // Will replace this string with the value provided via -n.
   "symbols": {
     "entityContentName": {
       "type": "parameter",
       "defaultValue": "MyEntity",
-      "replaces": "Patient"
+      "replaces": "Observation"
     },
     "entityCamelCaseContentName": {
       "type": "derived",
       "valueSource": "entityContentName",
       "valueTransform": "replace", // TODO - Find a right way of preserving camel case here...
-      "replaces": "patient"
+      "replaces": "observation"
     },
     "entityFileName": {
       "type": "derived",
       "valueSource": "entityContentName",
       "valueTransform": "replace",
-      "fileRename": "Patient"
+      "fileRename": "Observation"
     },
-    "patientContentName": {
+    "observationmanagementContentName": {
       "type": "derived",
       "valueSource": "name",
       "valueTransform": "replace",
-      "replaces": "Patient"
+      "replaces": "ObservationManagement"
     },
-    "patientSolutionName": {
+    "observationmanagementSolutionName": {
       "type": "derived",
       "valueSource": "name",
       "valueTransform": "replace",
@@ -159,7 +159,7 @@ For example:
 ## Prerequesites
 
 Having Docker Desktop installed on the hosted computer.
-Run a MongoDb container (default port: 27017 on local machine) to use and manipulate API Host : [Patient.Host](./Patient.Host/)
+Run a MongoDb container (default port: 27017 on local machine) to use and manipulate API Host : [ObservationManagement.Host](./ObservationManagement.Host/)
 
 ```
 docker run --name mymongo -d mongo:tag
@@ -167,5 +167,5 @@ docker run --name mymongo -d mongo:tag
 
 See: https://hub.docker.com/_/mongo
 
-Nothing to install for Integration tests : [Patient.Host.Tests](./Patient.Host.Tests/)
+Nothing to install for Integration tests : [ObservationManagement.Host.Tests](./ObservationManagement.Host.Tests/)
 
