@@ -6,7 +6,7 @@
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 7059
+          "Port": 7060
         }
       ],
       "UpstreamPathTemplate": "/patient",
@@ -22,7 +22,7 @@
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 7059
+          "Port": 7060
         }
       ],
       "UpstreamPathTemplate": "/patient/{id}",
@@ -38,7 +38,7 @@
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 7069
+          "Port": 7060
         }
       ],
       "UpstreamPathTemplate": "/patient",
@@ -54,7 +54,7 @@
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 7069
+          "Port": 7060
         }
       ],
       "UpstreamPathTemplate": "/patient",
@@ -70,7 +70,7 @@
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 7069
+          "Port": 7060
         }
       ],
       "UpstreamPathTemplate": "/patient/{id}",
